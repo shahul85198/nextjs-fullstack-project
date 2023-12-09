@@ -1,20 +1,20 @@
-import { PrismaClient } from 'prisma/prisma-client'
+//import { PrismaClient } from 'prisma/prisma-client'
 import { Button, Card, CardBody, CardHeader, CardFooter, Typography } from '@/ui'
 
- async function getUsersList() {
+/* async function getUsersList() {
     const db = new PrismaClient();
     const list = await db.user.findMany({
         where: {
-            name: 'shahul'
+            name: "shahul"
         }
     });
     return {
         users: list
     }
 } 
-
+*/
 export default async function Page() {
-    const users = await getUsersList();
+   // const users = await getUsersList();
     return <section className="p-4">
         <h2>Users</h2>
         <Button>Material Button</Button>
@@ -39,6 +39,6 @@ export default async function Page() {
                 <Button>Read More</Button>
             </CardFooter>
         </Card>
-       <pre>{JSON.stringify(users, null, 2)}</pre> 
+       {/* <pre>{JSON.stringify(users, null, 2)}</pre> */} 
     </section>
 }
