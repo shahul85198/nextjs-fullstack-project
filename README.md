@@ -56,3 +56,11 @@ const config: Config = {
 
 export default withMT(config)
 ```
+
+# DEBOUNCE
+```
+vaka value paina changes jarigi napudu vatini meeru track chaiyadaniki amaina posibility options enti
+
+- useEffect  (side effects ni track chesidi dependency array empty unty vaka sari invok iyyi agipoidi )
+
+```
