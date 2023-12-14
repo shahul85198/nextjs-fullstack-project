@@ -64,3 +64,11 @@ vaka value paina changes jarigi napudu vatini meeru track chaiyadaniki amaina po
 - useEffect  (side effects ni track chesidi dependency array empty unty vaka sari invok iyyi agipoidi )
 
 ```
+
+## install ts-node
+```
+npm install -D typescript ts-node @types/node
+```
+```
+npx prisma db seed
+```

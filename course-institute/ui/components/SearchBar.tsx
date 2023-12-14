@@ -3,6 +3,12 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { Input } from "@material-tailwind/react";
 
+let count = 0;
+function getCount() {
+    count++;
+    return count
+}
+ 
 function debounce(callback: (value: any) => void, delay = 500) {
      let timer: any;
     return (value: any) => {
@@ -87,7 +93,7 @@ class Search extends React.Component {
 
     render() {
         return <div className='input-group'>
-            <input 
+            <Input 
              crossOrigin={true}
              value={this.state.searchText}
              type='text'
