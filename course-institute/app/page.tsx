@@ -19,11 +19,21 @@ const searchValue = async (text?: any) => {
 
 
 export default async function Home() {
-  const data = await getData();
+  const data = await getData()
   return (
     <main className="p-6">
        <h2>Welcome nextjs</h2>
-       <SearchBar searchCallback = {searchValue} />
+       <SearchBar search={async (payload: string) => {
+        'use server'
+        const prisma = new PrismaClient();
+        return await prisma.course.findMany({
+          where: {
+            title: {
+              contains: payload || ''
+            }
+          }
+        })
+       }} />
        <CoursesList list = {data.coursesInfo} />
        <pre>{JSON.stringify(data, null, 2)}</pre>
     </main>

@@ -19,8 +19,9 @@ function debounce(callback: (value: any) => void, delay = 500) {
     }
 }
 
-export default function SearchBar({searchCallback}: any) {
+export default function SearchBar({search}: any) {
     const [searchText, setSearchText] = useState('text')
+    const [courses, setCourses] = useState([])
     const getCourses = () => {
        const API_URL = `/api/courses?query=${searchText}`;
        console.log(": Search value changed ::", searchText, API_URL);
@@ -29,8 +30,16 @@ export default function SearchBar({searchCallback}: any) {
        .then(console.log)
     }
 
-    const debounceApi = useCallback( debounce((text: any) => {
+    const debounceApi = useCallback( debounce(async (text: any) => {
         console.log(":: debounceApi ::", text)
+
+        // API call
+        const api = await fetch(`/api/courses?query=${text}`)
+        const dataApi = await api.json()
+
+        //NextJS Server Action
+        const data = await search(text);
+        setCourses(data)
     }, 500), [])
 
     useEffect(() => {
@@ -65,6 +74,7 @@ export default function SearchBar({searchCallback}: any) {
               onChange={e => setSearchText(e.target.value)}
             />
             <p>Search Word: {searchText}</p>
+            {courses.map((course: any) => <li>{course.title}</li>)}
         </div>
             </>
     )
