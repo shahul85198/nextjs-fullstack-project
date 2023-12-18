@@ -1,5 +1,6 @@
 import SearchBar from "@/ui/components/SearchBar";
 import CoursesList from "@/ui/courses/CoursesList";
+import ExternalCourses from "@/ui/courses/ExternalCourses";
 import { PrismaClient } from "@prisma/client";
 
 async function getData() {
@@ -15,6 +16,13 @@ const searchValue = async (text?: any) => {
   console.log('TEXT...', text)
   let value = text ? text : ''
   return value
+}
+
+const getExternalCourse = async () => {
+  'use server'
+  const externalApi = await fetch('https://cms.fullstack.institute/rest/courses');
+  const response = await externalApi.json();
+  return response;
 }
 
 
@@ -34,6 +42,7 @@ export default async function Home() {
           }
         })
        }} />
+       <ExternalCourses getData={getExternalCourse}/>
        <CoursesList list = {data.coursesInfo} />
        <pre>{JSON.stringify(data, null, 2)}</pre>
     </main>
