@@ -1,6 +1,11 @@
+<<<<<<< HEAD
+=======
 //import { PrismaClient } from 'prisma/prisma-client'
 import { Button, Card, CardBody, CardHeader, CardFooter, Typography } from '@/ui'
+>>>>>>> 73ed02fa8b95bc91d39d2b549c0b9dfab4e18d7b
 
+<<<<<<< HEAD
+=======
 /* async function getUsersList() {
     const db = new PrismaClient();
     const list = await db.user.findMany({
@@ -42,3 +47,4 @@ export default async function Page() {
        {/* <pre>{JSON.stringify(users, null, 2)}</pre> */} 
     </section>
 }
+>>>>>>> 73ed02fa8b95bc91d39d2b549c0b9dfab4e18d7b
